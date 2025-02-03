@@ -1,0 +1,57 @@
+@use "_fonts.scss" as *;
+
+@layer utilities {
+  .container-max-1200 {
+    @apply max-w-screen-xl mx-auto px-2 md:px-20;
+
+    &--no-padding {
+      @apply max-w-screen-xl mx-auto px-0 md:px-20;
+    }
+  }
+  .center-circle {
+      @apply aspect-[1/1] flex items-center justify-center rounded-full border-4 border-solid border-primary bg-white;
+  }
+  .position-center {
+      @apply absolute right-1/2 translate-x-1/2
+  }
+
+  .rounded-4xl {
+    @apply rounded-3xl md:rounded-[3em]
+  }
+
+  .border-3 {
+    border-width: 3px;
+  }
+
+  .transition-ease-in-out {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .animate-slidein-left {
+    @apply transition-all duration-300 ease-in-out translate-x-full;
+  }
+
+  .error-message {
+    @apply w-full p-2 text-xs text-red-400 border-red-400 bg-red-200; 
+  }
+}
+
+body {
+  font-family: 'Bagoss Standard';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-size: 18px;
+  //color: $black;
+  //background-color: $bg-body;
+}
+
+p {
+  @media (min-width: 600px) {
+    @apply text-lg;
+  }
+}
+
+p + p {
+  @apply mt-4;
+}
