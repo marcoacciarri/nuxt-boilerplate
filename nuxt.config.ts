@@ -79,7 +79,91 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    '@nuxtjs/seo', '@nuxt/image', '@nuxt/icon', '@nuxt/fonts', '@nuxtjs/tailwindcss', 'nuxt-viewport'
+    '@nuxtjs/seo', '@nuxt/image', '@nuxt/icon', '@nuxt/fonts', '@nuxtjs/tailwindcss', 'nuxt-viewport', 'nuxt-booster'
   ],
+  booster: {
+
+    detection: {
+      performance: true,
+      browserSupport: true
+    },
+
+    performanceMetrics: {
+      device: {
+        hardwareConcurrency: { min: 2, max: 48 },
+        deviceMemory: { min: 2 }
+      },
+      timing: {
+        fcp: 800,
+        dcl: 1200
+      }
+    },
+
+    fonts: [{
+      family: 'Font A',
+      locals: ['Font A'],
+      fallback: ['Arial', 'sans-serif'],
+      variances: [
+        {
+          style: 'normal',
+          weight: 400,
+          sources: [
+            { src: '@/assets/fonts/font-a-regular.woff', type:'woff' },
+            { src: '@/assets/fonts/font-a-regular.woff2', type:'woff2' }
+          ]
+        }, {
+          style: 'italic',
+          weight: 400,
+          sources: [
+            { src: '@/assets/fonts/font-a-regularItalic.woff', type:'woff' },
+            { src: '@/assets/fonts/font-a-regularItalic.woff2', type:'woff2' }
+          ]
+        }, {
+          style: 'normal',
+          weight: 700,
+          sources: [
+            { src: '@/assets/fonts/font-a-700.woff', type:'woff' },
+            { src: '@/assets/fonts/font-a-700.woff2', type:'woff2' }
+          ]
+        }
+      ]
+    }],
+
+    targetFormats: ['webp', 'avif', 'jpg|jpeg|png|gif'],
+
+    componentAutoImport: false,
+    componentPrefix: undefined,
+
+    /**
+     * IntersectionObserver rootMargin for Compoennts and Assets
+     */
+    lazyOffset: {
+      component: '0%',
+      asset: '0%'
+    }
+    
+  },
+  image: {
+    quality: 80,
+    format: ['webp'],
+    screens: {
+      default: 320,
+      xxs: 480,
+      xs: 576,
+      sm: 768,
+      md: 996,
+      lg: 1200,
+      xl: 1367,
+      xxl: 1600,
+      '4k': 1921
+    },
+
+    domains: ['img.youtube.com', 'i.vimeocdn.com'],
+
+    alias: {
+      youtube: 'https://img.youtube.com',
+      vimeo: 'https://i.vimeocdn.com',
+    }
+  },
   compatibilityDate: '2024-11-01',
 })
